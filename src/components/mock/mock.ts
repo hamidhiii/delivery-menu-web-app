@@ -1,32 +1,32 @@
 const mockData = [
   {
     id: "first",
-    title: "Рамадан сеты",
+    title: "🍱 Сети",
     childs: Array(3).fill(""),
   },
   {
     id: "second",
-    title: "Лаваши",
+    title: "🍗 Курочка",
     childs: Array(8).fill(""),
   },
   {
     id: "third",
-    title: "Шаурма",
+    title: "🍟 Снеки",
     childs: Array(16).fill(""),
   },
   {
     id: "fourth",
-    title: "Бургеры",
+    title: "🌯 Лестер",
     childs: Array(5).fill(""),
   },
   {
     id: "five",
-    title: "Триндвич",
+    title: "🍔 Бургеры",
     childs: Array(9).fill(""),
   },
   {
     id: "six",
-    title: "Донар",
+    title: "🥤 Напитки",
     childs: Array(2).fill(""),
   },
 ];

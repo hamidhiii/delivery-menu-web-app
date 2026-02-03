@@ -6,15 +6,17 @@
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
   color: var(--text-primary-color);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background-color: var(--bg-primary-color);
+  overflow-x: hidden;
+}
+
+.main-content {
+  padding-bottom: 90px; // Spacing for BottomNav
 }
 
 button {
@@ -22,4 +24,5 @@ button {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  font: inherit;
 }

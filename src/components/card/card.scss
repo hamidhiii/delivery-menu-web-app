@@ -1,156 +1,127 @@
 .card {
-  height: 316px;
-  padding: 8px;
-  border-radius: 24px;
+  height: 100%;
+  padding: 12px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
   background-color: var(--card-bg);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
   &__image-wrap {
-    height: 170px;
-    border-radius: 18px;
-    background-color: var(--color-white);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    background-color: transparent;
     overflow: hidden;
     position: relative;
-    -webkit-backface-visibility: hidden;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   &__image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 100%;
     width: 100%;
-    position: absolute;
-    max-width: 100%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
   }
 
   &__description {
-    padding: 0 6px;
-    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 4px;
+    padding: 0 4px;
   }
 
   &__price {
-    color: var(--price-color);
+    color: var(--accent-color);
     font-size: 16px;
-    white-space: nowrap;
-    margin-right: 4px;
-  }
-
-  &__price-old {
-    font-size: 11px;
-    color: var(--text-gray);
-    white-space: nowrap;
-    font-weight: 500;
-    letter-spacing: 0.11px;
-    position: relative;
-
-    &::before {
-      content: "";
-      width: 100%;
-      border-bottom: solid 1px var(--text-gray);
-      position: absolute;
-      top: 50%;
-      z-index: 1;
-      pointer-events: none;
-    }
+    font-weight: 700;
   }
 
   &__name {
-    margin: 4px 0;
-    margin: 4px 0;
-    word-break: break-word;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-primary-color);
+    margin: 2px 0;
     display: -webkit-box;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 13px;
-    font-weight: normal;
-    -webkit-line-clamp: 2;
-    line-height: 15px;
-    color: var(--text-primary-color);
   }
 
   &__measure {
-    font-weight: 500;
-    letter-spacing: 0.11px;
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-gray);
-    display: -webkit-box;
-    overflow: hidden;
-    word-break: break-word;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    margin-bottom: 8px;
   }
 
   &__btn {
-    height: 36px;
-    background-color: var(--card-btn-bg);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-    border-radius: 100px;
+    width: 100%;
+    height: 40px;
+    background-color: var(--accent-color);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-primary-color);
-    position: relative;
+    color: white;
+    font-weight: 600;
+    margin-top: auto;
+    transition: background-color 0.2s;
 
-    &::after {
-      content: "";
-      height: 100%;
-      left: 0;
-      border-radius: 16px;
-      pointer-events: none;
-      position: absolute;
-      transition: background 0.2s;
-      width: 100%;
-      z-index: 0;
+    &:active {
+      background-color: var(--accent-color-hover);
     }
 
-    &:active::after {
-      background-color: color(display-p3 0.960144 0.956909 0.949715 / 0.2);
+    svg {
+      margin-left: 4px;
     }
   }
 
   &__counter {
     width: 100%;
-    height: 36px;
-    background-color: var(--card-btn-bg);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-    border-radius: 100px;
-    color: var(--text-primary-color);
+    height: 40px;
+    background-color: var(--accent-color);
+    border-radius: 12px;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 4px;
+    margin-top: auto;
+
+    span {
+      font-weight: 700;
+      font-size: 16px;
+    }
   }
 
   &__counter-btn {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    border-radius: 10px;
+    transition: background-color 0.2s;
 
-    &::after {
-      content: "";
-      height: 100%;
-      left: 0;
-      border-radius: 16px;
-      pointer-events: none;
-      position: absolute;
-      transition: background 0.2s;
-      width: 100%;
-      z-index: 0;
+    &:active {
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
-    &:active::after {
-      background-color: color(display-p3 0.960144 0.956909 0.949715 / 0.2);
+    svg {
+      color: white;
     }
   }
 }

@@ -30,10 +30,9 @@ export function Card(): React.ReactElement {
         </div>
 
         <div className="card__description">
-          <span className="card__price">{numberDigits(43000)} сум</span>
-          {/* <span className="card__price-old">{numberDigits(148000)} сум</span> */}
           <p className="card__name">Фреш Бургер с курицей</p>
           <div className="card__measure">251 г</div>
+          <span className="card__price">{numberDigits(43000)} сум</span>
         </div>
       </div>
 
@@ -49,7 +48,8 @@ export function Card(): React.ReactElement {
         </div>
       ) : (
         <button className="card__btn" onClick={increment}>
-          <PluseIcon width={20} height={20} />
+          <span>В корзину</span>
+          <PluseIcon width={18} height={18} />
         </button>
       )}
     </div>

@@ -18,47 +18,38 @@ export function ScrollActiveWrapper(props: IProps): React.ReactElement {
   const isScrolling = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
-    const sectionContainer = sectionContainerRef.current;
     const handleScroll = throttle(() => {
-      if (!sectionContainer) return;
-      const sections =
-        sectionContainer.querySelectorAll<HTMLElement>("div.section");
-      const sectionLen = sections.length - 1;
-      if (!sectionContainer) return;
+      const sectionContainer = sectionContainerRef.current;
+      if (!sectionContainer || !userScroll) return;
 
-      const containerRect = sectionContainer.getBoundingClientRect();
+      const sections = sectionContainer.querySelectorAll<HTMLElement>("div.section");
+      let currentSectionIndex = 0;
 
-      if (containerRect.top < 0) {
-        const activeSectionIndex =
-          sectionLen -
-          [...sections].reverse().findIndex((section) => {
-            return window.scrollY >= (section?.offsetTop ?? 0) - sectionOffset;
-          });
-
-        if (userScroll && activeSectionIndex !== swiperInstance?.activeIndex) {
-          setActiveIndex(activeSectionIndex);
-          swiperInstance?.slideTo(activeSectionIndex);
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        // If the section's top is roughly at the top of the viewport (considering offset)
+        if (rect.top <= sectionOffset + 10) {
+          currentSectionIndex = index;
         }
+      });
 
-        // user scroll set true
-        if (isScrolling.current) {
-          clearTimeout(isScrolling.current);
-        }
-        isScrolling.current = setTimeout(() => {
-          setUserScroll(true);
-        }, 200);
-        // user scroll set true
+      if (currentSectionIndex !== swiperInstance?.activeIndex) {
+        setActiveIndex(currentSectionIndex);
+        swiperInstance?.slideTo(currentSectionIndex);
       }
-    }, 150);
+    }, 100);
+
     window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [swiperInstance, userScroll, setActiveIndex]);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (isScrolling.current) {
-        clearTimeout(isScrolling.current);
-      }
-    };
-  }, [swiperInstance, userScroll, setUserScroll, isScrolling]);
+  // Reset userScroll to true after a short delay when navigation clicking finishes
+  useEffect(() => {
+    if (!userScroll) {
+      const timer = setTimeout(() => setUserScroll(true), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [userScroll, setUserScroll]);
 
   return (
     <div ref={sectionContainerRef} id="sections-container">

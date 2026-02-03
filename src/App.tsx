@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import { Header } from "./components/header/header";
 import { ScrollActiveWrapper } from "./components/scroll-active-wrapper/scroll-active-wrapper";
 import Swiper from "swiper";
-import { HeaderPlaceholder } from "./components/header-placeholder/header-placeholder";
+import { BottomNav } from "./components/bottom-nav/bottom-nav";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
 const tg = window.Telegram.WebApp;
-
-
 
 export function App(): React.ReactElement {
   const [swiperInstance, setSwiperInstance] = useState<Swiper | null>(null);
@@ -22,26 +20,23 @@ export function App(): React.ReactElement {
     tg.enableClosingConfirmation();
   }, []);
 
-  const onClose = () => {
-    tg.close();
-  };
-
   return (
-    <div>
-      <HeaderPlaceholder />
+    <div className="app-container">
       <Header
         setUserScroll={setUserScroll}
         setSwiperInstance={setSwiperInstance}
         setActiveIndex={setActiveIndex}
         activeIndex={activeIndex}
-        onClose={onClose}
       />
-      <ScrollActiveWrapper
-        userScroll={userScroll}
-        setUserScroll={setUserScroll}
-        swiperInstance={swiperInstance}
-        setActiveIndex={setActiveIndex}
-      />
+      <main className="main-content">
+        <ScrollActiveWrapper
+          userScroll={userScroll}
+          setUserScroll={setUserScroll}
+          swiperInstance={swiperInstance}
+          setActiveIndex={setActiveIndex}
+        />
+      </main>
+      <BottomNav />
     </div>
   );
 }
