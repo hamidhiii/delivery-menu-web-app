@@ -1,0 +1,21 @@
+.section {
+  padding-bottom: 24px;
+
+  &__title {
+    font-size: 28px;
+    line-height: 33px;
+    color: var(--text-primary-color);
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+    padding: 27px 24px 16px 24px;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 8px));
+    gap: 8px;
+    padding: 0 8px;
+  }
+}
