@@ -15,7 +15,6 @@ export function ScrollActiveWrapper(props: IProps): React.ReactElement {
   const { swiperInstance, userScroll, setUserScroll, setActiveIndex } = props;
   const sectionContainerRef = useRef<null | HTMLDivElement>(null);
   const sectionOffset = 112;
-  const isScrolling = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
     const handleScroll = throttle(() => {
