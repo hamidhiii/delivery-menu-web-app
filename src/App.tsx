@@ -9,6 +9,8 @@ import "swiper/css/pagination";
 
 const tg = window.Telegram.WebApp;
 
+
+
 export function App(): React.ReactElement {
   const [swiperInstance, setSwiperInstance] = useState<Swiper | null>(null);
   const [userScroll, setUserScroll] = useState<boolean>(true);
@@ -16,6 +18,8 @@ export function App(): React.ReactElement {
 
   useEffect(() => {
     tg.ready();
+    tg.expand();
+    tg.enableClosingConfirmation();
   }, []);
 
   const onClose = () => {

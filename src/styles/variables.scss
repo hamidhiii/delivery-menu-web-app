@@ -1,9 +1,9 @@
 :root {
-  --text-primary-color: #e0deda;
-  --bg-primary-color: #191918;
-  --card-bg: #302f2d;
+  --text-primary-color: var(--tg-theme-text-color, #e0deda);
+  --bg-primary-color: var(--tg-theme-bg-color, #191918);
+  --card-bg: var(--tg-theme-secondary-bg-color, #302f2d);
   --color-white: #fff;
-  --price-color: #fa6a3c;
-  --text-gray: #9e9b98;
-  --card-btn-bg: #42413e;
+  --price-color: var(--tg-theme-button-color, #fa6a3c);
+  --text-gray: var(--tg-theme-hint-color, #9e9b98);
+  --card-btn-bg: var(--tg-theme-secondary-bg-color, #42413e);
 }
