@@ -2,16 +2,19 @@
 @import "./variables.scss";
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
-  color: var(--text-primary-color);
-  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary-color);
+  color: var(--text-primary-color);
   overflow-x: hidden;
 }
 
@@ -26,3 +29,15 @@ button {
   cursor: pointer;
   font: inherit;
 }
+
+// Import page styles
+@import "../pages/cart/cart-page.scss";
+@import "../pages/checkout/checkout-page.scss";
+@import "../pages/orders/orders-page.scss";
+@import "../pages/profile/profile-page.scss";
+@import "../pages/bank-cards/bank-cards-page.scss";
+
+// Import component styles
+@import "../components/payment-modal/payment-modal.scss";
+@import "../components/add-card-modal/add-card-modal.scss";
+@import "../components/success-modal/success-modal.scss";

@@ -2,6 +2,7 @@ import Swiper from "swiper";
 import { Navbar } from "../navbar/navbar";
 import { DeliveryIcon } from "../icons/delivery-icon";
 import { PickupIcon } from "../icons/pickup-icon";
+import { useI18n, Language } from "@/contexts/i18n-context";
 import "./header.scss";
 import { useState } from "react";
 
@@ -15,20 +16,20 @@ interface IProps {
 export function Header(props: IProps): React.ReactElement {
   const { activeIndex, setActiveIndex, setSwiperInstance, setUserScroll } = props;
   const [orderType, setOrderType] = useState<"delivery" | "pickup">("delivery");
-  const [lang, setLang] = useState<"RU" | "UZ" | "EN">("RU");
+  const { language, setLanguage, t } = useI18n();
 
   return (
     <header className="header">
       <div className="header__top">
         <div className="header__langs">
-          {(["RU", "UZ", "EN"] as const).map((l) => (
+          {(["ru", "uz"] as Language[]).map((l) => (
             <button
               key={l}
               className="header__lang"
-              data-active={lang === l}
-              onClick={() => setLang(l)}
+              data-active={language === l}
+              onClick={() => setLanguage(l)}
             >
-              {l}
+              {l.toUpperCase()}
             </button>
           ))}
         </div>
@@ -40,14 +41,14 @@ export function Header(props: IProps): React.ReactElement {
           onClick={() => setOrderType("delivery")}
         >
           <DeliveryIcon />
-          Доставка
+          {t.delivery}
         </button>
         <button
           className={`header__toggle ${orderType === "pickup" ? "header__toggle--active" : ""}`}
           onClick={() => setOrderType("pickup")}
         >
           <PickupIcon />
-          Самовывоз
+          {t.pickup}
         </button>
       </div>
 
